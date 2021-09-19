@@ -4,7 +4,7 @@
 ## Purpose
 
 * User can search for a city and be presented with the current and future conditions for that city.
-* The result will also return the date and an icon representing the current condition, temp, humidity, wind speed & UV index.
+* The result will return the date and an icon of the current conditions: temp, humidity, wind speed & UV index.
 * When the user views the UV index, a color is shown that indicates if the conditions are favorable, moderate or severe.
 * Results provide a 5-day weather forecast
 
