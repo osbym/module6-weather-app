@@ -45,7 +45,7 @@ THEN I am presented with current and future conditions for that city and that ci
 
 WHEN I view current weather conditions for that city
 
-THEN I am presented with the city name, date, an icon representation of weather conditions: temp, humidity, wind speed, and UV index
+THEN I am presented with the city, date, and icon rep of weather conditions: temp, humidity, wind speed, UV index
 
 WHEN I view the UV index
 
@@ -53,7 +53,7 @@ THEN I am presented with a color that indicates whether the conditions are favor
 
 WHEN I view future weather conditions for that city
 
-THEN I am presented with a 5-day forecast displaying: the date, an icon rep of weather conditions: temperature, wind speed, and humidity
+THEN I am presented w/ a 5-day forecast displaying: the date, icon of weather conditions: temp, wind speed, and humidity
 
 WHEN I click on a city in the search history
 
