@@ -31,7 +31,20 @@ var getCurrent = function() {
                 var tempF = Math.round((tempK - 273.15)*(9/5)+32);
                 $(".temp").text("Temperature: " + tempF + "\xB0 F");
 
-                
+                // Get Latitude & Longitude to get the UV Index
+                var lat = weatherData.coord.lat;
+                var long = weatherData.coord.lon;
+
+                // Get UV Index
+                var apiuv = 'https://api.openweathermap.org/data/2.5/uvi?appid=5e20a8bcfbf39e871ed0d43a2ad4bfcb' + '&lat=' + lat + '&lon=' + long;
+                $.getJSON(apiuv, getUV);
+                function getUV(Data) {
+                    var uvIndex = Data.value;
+                    $(".uv").text("UV Index: " + uvIndex);
+                    // The color of the UV index based off of the severity of the value
+                }
+
+
 
             }
         }
