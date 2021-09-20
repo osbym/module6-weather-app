@@ -139,6 +139,40 @@ var getForecast = function() {
     });
 
 };
+getForecast();
+// Update weather with History City Buttons
+$(".city-history").on('click', '#${cityName}', function historyWeather () {
+    var newCity = event.target.textContent;
+    var apiNew = 'https://api.openweathermap.org/data/2.5/weather?q=' + newCity + '&appid=5e20a8bcfbf39e871ed0d43a2ad4bfcb';
+    var newFore = 'https://api.openweathermap.org/data/2.5/forecast?q=' + newCity + '&appid=5e20a8bcfbf39e871ed0d43a2ad4bfcb';
+
+// API for Current Weather
+
+var newCurrent = function() {
+    fetch(apiNew).then(function(newWeather) {
+        if(newWeather.ok) {
+            newWeather.json().then(function(newData) {
+                var city2 = newData.name;
+                var condition2 = newData.weather[0].icon;
+                $("#city").text("The weather in " + city2);
+                var iconurl2 = "https://openweathermap.org/img/w/" + condition2 + ".png";
+                $("#icon").attr('src', inconurl2);
+                var humidity2 = newData.main.humidity;
+                $(".humid").text("Humidity: " + humidity2 + "%");
+                var speed2 = newData.wind.speed;
+                $(".speed").text("Wind Speed: " + speed2 + " MPH");
+                var tempK2 = newData.main.temp;
+                var tempF2 = Math.round((tempK2 - 273.15)*(9/5)+32);
+                $(".temp").text("Temperature: " + tempF2 + "\xB0 F");
+            });
+        };
+    });
+}
+
+            }
+        }
+    }
+}
 
 
 
