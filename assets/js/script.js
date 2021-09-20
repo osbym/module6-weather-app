@@ -128,7 +128,19 @@ var getForecast = function() {
                 $(".temp5").text("Temp: " + Math.round(((day5.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
                 $(".humid5").text("Humidty: " + day5.main.humidity + "%");
             });
-            
+
+            // Local Storage of forecasted weather
+            var forecastWeather = day1 + "," + day2 + "," + day3 + "," + day4 + "," + day5;
+            localStorage.setItem("5DayWeather", JSON.stringify(forecastWeather));
+            var retrievedForecast = localStorage.getItem("5DayWeather");
+
+        }
+
+    });
+
+};
+
+
 
 
 
