@@ -22,7 +22,7 @@
 
 ## Website
 
-(( INSERT WEBSITE ))
+https://osbym.github.io/module6-weather-app/
 
 
 ## User Story
