@@ -1,7 +1,7 @@
 // Get Current Weather
-$(document).ready(function () {
+$(document).ready(function() {
     $(".searchBtn").on('click', function getWeather () {
-        var cityName = $('cityInput').val().toUpperCase();
+        var cityName = $('#cityInput').val().toUpperCase();
         // Open up Today's Date
         $('#today').text(moment().format('MMMM Do, YYYY'));
         // API for Current Weather
@@ -72,7 +72,6 @@ var getCurrent = function() {
                     var history = document.getElementById("city-history");
                     history.appenedChild(cityH);
                 }
-
                 cityHistory();
             });
 
@@ -168,39 +167,70 @@ var newCurrent = function() {
         };
     });
 }
+newCurrent();
+var newForecast = function() {
+    fetch(newFore).then(function(weatherFore) {
+        if(weatherFore.ok) {
+            weatherFore.json().then(function(data) {
+                var currentDate = moment().format('YYYY-MM-DD');
+                let trimmedData = data.list.filter((item) => {
+                    return item.dt_txt.slice(0, 10) !== currentDate
+                });
 
-            }
-        }
-    }
+    var day1 = trimmedData[0];
+    var day2 = trimmedData[8];
+    var day3 = trimmedData[16];
+    var day4 = trimmedData[24];
+    var day5 = trimmedData[32];
+
+    // Day 1 Forecast
+    $("#day1").text(moment(day1.dt_txt).format('MM.DD.YY'));
+    $("#icon1").attr('scr', "https://openweathermap.org/img/w/" + day1.weather[0].icon + ".png");
+    $(".temp1").text("Temp: " + Math.round(((day1.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
+    $(".humid1").text("Humidty: " + day1.main.humidity + "%");
+
+    // Day 2 Forecast
+    $("#day2").text(moment(day2.dt_txt).format('MM.DD.YY'));
+    $("#icon2").attr('scr', "https://openweathermap.org/img/w/" + day2.weather[0].icon + ".png");
+    $(".temp2").text("Temp: " + Math.round(((day2.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
+    $(".humid2").text("Humidty: " + day2.main.humidity + "%");
+
+    // Day 3 Forecast
+    $("#day3").text(moment(day3.dt_txt).format('MM.DD.YY'));
+    $("#icon3").attr('scr', "https://openweathermap.org/img/w/" + day3.weather[0].icon + ".png");
+    $(".temp3").text("Temp: " + Math.round(((day3.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
+    $(".humid3").text("Humidty: " + day3.main.humidity + "%");
+
+    // Day 4 Forecast 
+    $("#day4").text(moment(day4.dt_txt).format('MM.DD.YY'));
+    $("#icon4").attr('scr', "https://openweathermap.org/img/w/" + day4.weather[0].icon + ".png");
+    $(".temp4").text("Temp: " + Math.round(((day4.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
+    $(".humid4").text("Humidty: " + day4.main.humidity + "%");
+
+    // Day 5 Forecast
+    $("#day5").text(moment(day5.dt_txt).format('MM.DD.YY'));
+    $("#icon5").attr('scr', "https://openweathermap.org/img/w/" + day5.weather[0].icon + ".png");
+    $(".temp5").text("Temp: " + Math.round(((day5.main.temp_max-273.15)*(9/5)+32)) + "\xB0 F");
+    $(".humid5").text("Humidty: " + day5.main.humidity + "%");
+   
+    });
+    // Local Storage of Forecasted Weather
+    var forecastWeather = day1 + "," + day2 + "," + day3 + "," + day4 + "," + day5;
+    localStorage.setItem("5DayWeather", JSON.stringify(forecastWeather));
+    var retrievedForecast = localStorage.getItem("5DayWeather");
+
 }
 
+});
+
+    };
+
+newForecast();
+});
+    });
+});
 
 
 
-
-
-
-
-
-            }
-        }
-    }
-}
-
-
-                        
-                        
-                        }
-                        }
-                    }
-                }
-
-
-
-            }
-        }
-    }
-}
-
-
-}
+    
+        
