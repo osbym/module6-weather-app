@@ -62,4 +62,5 @@ THEN I am again presented with current and future conditions for that city
 
 ## Mock Up
 
-(( INSERT PICTURE OF MOCK-UP ))
+![image](https://user-images.githubusercontent.com/87884472/134028004-97773a7b-db12-47c4-a2cd-e49e13c7ca95.png)
+
